@@ -39,7 +39,7 @@ Look at how easy testing a Hook can be!
 import { proxyHook, cleanup } from 'react-proxy-hook';
 import useCounter from '../use-counter';
 
-const useCounterProxy = proxyHook(useCounterProxy);
+const useCounterProxy = proxyHook(useCounter);
 
 afterEach(cleanup);
 
