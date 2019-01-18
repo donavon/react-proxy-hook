@@ -1,6 +1,6 @@
 {
   "name": "react-proxy-hook",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Helps you test a React Hook",
   "main": "dist/index.js",
   "source": "src/index.js",
