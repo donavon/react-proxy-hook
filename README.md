@@ -52,11 +52,43 @@ test('useCounter', () => {
 });
 ```
 
+### Testing objects
+
+To test with a returned object (ex: `{ foo: 'bar' }` ) use the dot notation.
+
+```js
+const returnedVal = useFooProxy();
+expect(returnedVal.foo).toBe('bar');
+```
+
+### Testing arrays
+
+To test with a returned array (ex: `[0]` ) use bracket notation.
+
+```js
+const returnedVal = useFooProxy();
+expect(returnedVal[0]).toBe(0);
+```
+
+### Testing other types
+
+To test with other returned types (i.e. string, numbers, `null`, `undefined`), use they key "value".
+
+```js
+const returnedVal = useFooProxy();
+expect(returnedVal.value).toBe('foo');
+```
+
 ### Limitations
 
-- Currently, you can only test Hooks that return an object.
+You must not deconstruct the returned value in your test.
+For example, the following wo't work as `count` will still be `0`.
 
-- You must not deconstruct the returned object in your test.
+```js
+const { count, increment } = useCounterProxy(0);
+increment();
+expect(count).toBe(1);
+```
 
 ## Live demo
 
