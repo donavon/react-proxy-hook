@@ -9,6 +9,7 @@ const proxyHook = (hook) => {
   const proxiedHook = (...args) => {
     const returnVal = {};
     const proxy = (value) => {
+      // eslint-disable-next-line no-nested-ternary
       const obj = Array.isArray(value) ? { ...value }
         : isObject(value) ? value
           : { value };
