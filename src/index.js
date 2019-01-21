@@ -7,7 +7,8 @@ const proxyHook = (hook) => {
   const proxiedHook = (...args) => {
     const returnVal = {};
     const proxy = (val) => {
-      Object.assign(returnVal, val);
+      const obj = Array.isArray(val) ? { ...val } : val;
+      Object.assign(returnVal, obj);
       return null;
     };
     render(<Component args={args} proxy={proxy} />);
