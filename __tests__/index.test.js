@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import 'jest-dom/extend-expect';
 
-import { proxyHook, cleanup } from '../src';
+import { proxyHook, testHook, cleanup } from '../src';
 
 const useFoo = val => val;
 
@@ -40,5 +41,19 @@ describe('proxyHook', () => {
   test('works with undefined', () => {
     const returnValue = useFooProxy(undefined);
     expect(returnValue.value).toBe(undefined);
+  });
+});
+
+describe('testHook', () => {
+  test('import { testHook } from "react-proxy-hook"', () => {
+    expect(typeof testHook).toBe('function');
+  });
+  test('testHook calls the callback', () => {
+    const spy = jest.fn();
+    testHook(spy);
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+  test('confirm we can safely call a React Hook from within the callback', () => {
+    testHook(() => useState());
   });
 });
