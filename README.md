@@ -6,7 +6,7 @@ Helps you test a React Hook
 
 ## Requirement ⚠️
 
-To use `react-proxy-hook`, you must use `react@16.8.0-alpha.0`. React Hooks is currently at
+To use `react-proxy-hook`, you must use `react@16.8.0-alpha.1`. React Hooks is currently at
 **[RFC](https://github.com/reactjs/rfcs/pull/68)** stage.
 
 ## Installation
@@ -54,7 +54,11 @@ test('useCounter', () => {
 Using Method 1 (suggested), there are no restrictions on destructuring.
 
 I've [made a PR](https://github.com/kentcdodds/react-testing-library/pull/274)
-into `react-testing-library` for this, so hopefully this willbe backed in soon.
+into `react-testing-library` for this, so hopefully this will be in merged soon.
+
+See the test for Method 1 running live on CodeSandbox.
+
+[![Edit React Codesandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/6lqxvx42mz?module=%2Fsrc%2F__tests__%2Fuse-counter.js)
 
 ## Method 2: `proxyHook`
 
@@ -78,6 +82,10 @@ test('useCounter', () => {
   expect(counterData.count).toBe(0);
 });
 ```
+
+See the test for Method 2 running live on CodeSandbox.
+
+[![Edit demo app on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/6lqxvx42mz)
 
 ### Testing objects
 
@@ -116,14 +124,6 @@ const { count, increment } = useCounterProxy(0);
 increment();
 expect(count).toBe(1);
 ```
-
-## Live demo
-
-You can see `react-proxy-hook` used to test a demo counter app in CodeSandbox.
-This is the same app the Kent talked about on his [YouTube video](https://youtu.be/0e6WCQYg5tU),
-but the tests were changed to use `react-proxy-hook` instead.
-
-[![Edit demo app on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/6lqxvx42mz)
 
 ## License
 
