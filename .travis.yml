@@ -8,7 +8,7 @@ jobs:
     - stage: test
       script: npm t
     - stage: npm deploy
-      if: tag IS present AND branch = master
+      if: branch = master
       script: echo "Deploying to npm..."
       deploy:
         provider: npm
