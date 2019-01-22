@@ -29,11 +29,38 @@ component.
 
 > Maybe should have been called a HOH (Higher Order Hook)?
 
+Look at how easy testing a Hook can be!
+
+## Method 1: `testHook`
+
+Method 1 requires that you place the call to your cutom Hook inside of a callback function. You then destructure (or not) your data into a `let` that you previously defined.
+
+```js
+import { testHook, cleanup } from 'react-proxy-hook';
+import useCounter from '../use-counter';
+
+afterEach(cleanup);
+
+test('useCounter', () => {
+  let count, increment;
+  testHook(() => ({ count, increment } = useCounter({ initialCount: 2 })));
+
+  expect(count).toBe(2);
+  increment();
+  expect(count).toBe(3);
+});
+```
+
+Using Method 1 (suggested), there are no restrictions on destructuring.
+
+I've [made a PR](https://github.com/kentcdodds/react-testing-library/pull/274)
+into `react-testing-library` for this, so hopefully this willbe backed in soon.
+
+## Method 2: `proxyHook`
+
 You test your Hook just like you would use it in an actual component.
 Just pass your actual hook to `proxyHook` and it will return
 a proxied version of your hook.
-
-Look at how easy testing a Hook can be!
 
 ```js
 import { proxyHook, cleanup } from 'react-proxy-hook';

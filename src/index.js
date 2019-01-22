@@ -23,7 +23,17 @@ const proxyHook = (hook) => {
   return proxiedHook;
 };
 
+function TestHook({ callback }) {
+  callback();
+  return null;
+}
+
+const testHook = (callback) => {
+  render(<TestHook callback={callback} />);
+};
+
 export {
   proxyHook,
+  testHook,
   cleanup,
 };

@@ -1,6 +1,6 @@
 {
   "name": "react-proxy-hook",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Helps you test a React Hook",
   "main": "dist/index.js",
   "source": "src/index.js",
@@ -35,8 +35,8 @@
     "eslint-config-amex": "^9.0.0",
     "jest": "^23.6.0",
     "jest-dom": "^3.0.0",
-    "react": "16.8.0-alpha.0",
-    "react-dom": "16.8.0-alpha.0",
+    "react": "16.8.0-alpha.1",
+    "react-dom": "16.8.0-alpha.1",
     "react-testing-library": "^5.4.4",
     "rimraf": "^2.6.2"
   },
